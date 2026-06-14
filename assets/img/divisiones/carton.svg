@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 170" fill="none" role="img" aria-label="Cartón corrugado">
+  <ellipse cx="120" cy="150" rx="80" ry="10" fill="#000000" opacity="0.28"/>
+  <!-- Box body -->
+  <rect x="66" y="72" width="108" height="66" rx="2" fill="#d6ab68"/>
+  <rect x="66" y="72" width="108" height="66" rx="2" stroke="#b98a45" stroke-width="1.5"/>
+  <!-- Inside opening -->
+  <polygon points="66,72 120,58 174,72 120,86" fill="#a87f43"/>
+  <!-- Open flaps -->
+  <polygon points="66,72 120,58 98,42 44,56" fill="#c2954f"/>
+  <polygon points="174,72 120,58 142,42 196,56" fill="#cba059"/>
+  <!-- Corrugation edge -->
+  <path d="M46 55c4 2 4-3 8-1s4 3 8 1 4-3 8-1" stroke="#8d6a33" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+  <!-- Tape -->
+  <rect x="66" y="93" width="108" height="9" fill="#c2954f" opacity="0.65"/>
+  <!-- Print colors accent -->
+  <circle cx="98" cy="120" r="6" fill="#ffc20a"/>
+  <circle cx="116" cy="120" r="6" fill="#2b82f6"/>
+  <circle cx="134" cy="120" r="6" fill="#2fbf71"/>
+</svg>

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 170" fill="none" role="img" aria-label="Logística y 3PL">
+  <ellipse cx="120" cy="144" rx="94" ry="10" fill="#000000" opacity="0.28"/>
+  <!-- Trailer -->
+  <rect x="32" y="56" width="122" height="66" rx="4" fill="#e1e8f1"/>
+  <rect x="32" y="56" width="122" height="66" rx="4" stroke="#b9c4d6" stroke-width="2"/>
+  <line x1="64" y1="56" x2="64" y2="122" stroke="#c8d1de" stroke-width="2"/>
+  <line x1="95" y1="56" x2="95" y2="122" stroke="#c8d1de" stroke-width="2"/>
+  <line x1="126" y1="56" x2="126" y2="122" stroke="#c8d1de" stroke-width="2"/>
+  <!-- Cab -->
+  <path d="M154 76h26l24 26v20h-50z" fill="#2b82f6"/>
+  <path d="M160 82h17l15 17h-32z" fill="#bcd6ff"/>
+  <rect x="154" y="118" width="52" height="6" rx="2" fill="#1f4f9e"/>
+  <!-- Wheels -->
+  <circle cx="74" cy="124" r="15" fill="#1c2536"/><circle cx="74" cy="124" r="6" fill="#46566f"/>
+  <circle cx="178" cy="124" r="15" fill="#1c2536"/><circle cx="178" cy="124" r="6" fill="#46566f"/>
+  <!-- Motion lines -->
+  <path d="M6 78h22M2 96h28M10 114h18" stroke="#2b82f6" stroke-width="3.4" stroke-linecap="round"/>
+</svg>

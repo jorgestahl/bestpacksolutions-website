@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 170" fill="none" role="img" aria-label="Empaque de madera">
+  <ellipse cx="120" cy="152" rx="86" ry="10" fill="#000000" opacity="0.28"/>
+  <!-- Crate -->
+  <rect x="74" y="38" width="92" height="46" rx="3" fill="#d8ad6c"/>
+  <rect x="74" y="38" width="92" height="11" rx="3" fill="#c6964f"/>
+  <rect x="113" y="38" width="14" height="46" fill="#c6964f" opacity="0.8"/>
+  <path d="M88 78v-16m0-16 0 0m0 0-5 6m5-6 5 6" stroke="#8d6433" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="148" cy="63" r="11" fill="#2b82f6"/>
+  <path d="M143 63l3.6 3.6L153 59" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Pallet top deck -->
+  <rect x="34" y="88" width="172" height="16" rx="2" fill="#c79a5e"/>
+  <line x1="92" y1="88" x2="92" y2="104" stroke="#7a552b" stroke-width="1.5"/>
+  <line x1="148" y1="88" x2="148" y2="104" stroke="#7a552b" stroke-width="1.5"/>
+  <!-- Blocks -->
+  <rect x="46" y="104" width="26" height="22" fill="#8d6433"/>
+  <rect x="107" y="104" width="26" height="22" fill="#8d6433"/>
+  <rect x="168" y="104" width="26" height="22" fill="#8d6433"/>
+  <!-- Bottom deck -->
+  <rect x="34" y="126" width="172" height="15" rx="2" fill="#b9874a"/>
+  <line x1="92" y1="126" x2="92" y2="141" stroke="#7a552b" stroke-width="1.5"/>
+  <line x1="148" y1="126" x2="148" y2="141" stroke="#7a552b" stroke-width="1.5"/>
+</svg>
