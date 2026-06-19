@@ -1,0 +1,8 @@
+{
+  "headers": [
+    { "source": "/assets/img/:path*",   "headers": [{ "key": "Cache-Control", "value": "public, max-age=2592000" }] },
+    { "source": "/assets/video/:path*", "headers": [{ "key": "Cache-Control", "value": "public, max-age=2592000" }] },
+    { "source": "/assets/css/:path*",   "headers": [{ "key": "Cache-Control", "value": "public, max-age=86400, must-revalidate" }] },
+    { "source": "/assets/js/:path*",    "headers": [{ "key": "Cache-Control", "value": "public, max-age=86400, must-revalidate" }] }
+  ]
+}
