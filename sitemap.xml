@@ -25,6 +25,12 @@
   <url><loc>https://www.bestpack.com.mx/tarimas-queretaro</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://www.bestpack.com.mx/tarimas-guanajuato</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://www.bestpack.com.mx/tarimas-saltillo</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.bestpack.com.mx/tarimas-aguascalientes</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.bestpack.com.mx/tarimas-zacatecas</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.bestpack.com.mx/tarimas-leon</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://www.bestpack.com.mx/tarimas-monterrey</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.bestpack.com.mx/tarimas-guadalajara</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.bestpack.com.mx/tarimas-puebla</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
 
   <!-- Blog -->
   <url><loc>https://www.bestpack.com.mx/blog</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
