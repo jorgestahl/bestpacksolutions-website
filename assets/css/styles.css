@@ -276,6 +276,18 @@ p { color: var(--muted); }
 .footer-social { display: flex; gap: 12px; align-items: center; }
 .footer-social a { color: var(--muted); display: inline-flex; transition: color .2s ease, transform .2s ease; }
 .footer-social a:hover { color: var(--yellow); transform: translateY(-2px); }
+/* Barra CTA movil fija (Llamar | WhatsApp | Cotizar) */
+.mcta { display: none; }
+@media (max-width: 760px) {
+  .mcta { display: grid; grid-template-columns: repeat(3, 1fr); position: fixed; inset: auto 0 0 0; z-index: 60; background: rgba(8,12,20,.97); border-top: 1px solid var(--border); box-shadow: 0 -6px 20px rgba(0,0,0,.35); }
+  .mcta a { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; padding: 9px 6px; font-size: .72rem; font-weight: 600; color: #e2e8f0; text-decoration: none; }
+  .mcta a + a { border-left: 1px solid var(--border); }
+  .mcta a svg { width: 21px; height: 21px; }
+  .mcta-wa { color: #25D366 !important; }
+  .mcta-quote { color: var(--yellow) !important; }
+  .wa-float { display: none !important; }
+  body { padding-bottom: 60px; }
+}
 
 /* ---------- Divisions ---------- */
 .division-card { display: flex; flex-direction: column; }
