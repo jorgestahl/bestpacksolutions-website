@@ -130,6 +130,20 @@
     });
   }
 
+  /* ---------- Video hero: cargar solo en escritorio con buena conexión ---------- */
+  var heroVideo = document.querySelector(".hero-media video");
+  if (heroVideo) {
+    var vSource = heroVideo.querySelector("source[data-src]");
+    var conn = navigator.connection || {};
+    var goodConn = !conn.saveData && conn.effectiveType !== "slow-2g" && conn.effectiveType !== "2g" && conn.effectiveType !== "3g";
+    if (vSource && window.innerWidth >= 1024 && goodConn) {
+      vSource.src = vSource.getAttribute("data-src");
+      heroVideo.load();
+      var pp = heroVideo.play();
+      if (pp && pp.catch) pp.catch(function () {});
+    }
+  }
+
   /* ---------- Año en footer ---------- */
   var yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
