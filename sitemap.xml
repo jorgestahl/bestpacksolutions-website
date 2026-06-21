@@ -32,6 +32,14 @@
   <url><loc>https://www.bestpack.com.mx/tarimas-guadalajara</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://www.bestpack.com.mx/tarimas-puebla</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
 
+  <!-- Zonas industriales SLP -->
+  <url><loc>https://www.bestpack.com.mx/tarimas-zona-industrial-san-luis-potosi</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.bestpack.com.mx/tarimas-parque-logistik</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.bestpack.com.mx/tarimas-wtc-industrial</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.bestpack.com.mx/tarimas-villa-de-reyes</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.bestpack.com.mx/tarimas-eje-140</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://www.bestpack.com.mx/tarimas-tres-naciones</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+
   <!-- Blog -->
   <url><loc>https://www.bestpack.com.mx/blog</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://www.bestpack.com.mx/blog/que-es-ispm-15</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
