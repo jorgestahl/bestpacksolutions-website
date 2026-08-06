@@ -13,6 +13,7 @@
   <url><loc>https://www.bestpack.com.mx/empaque-retornable</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://www.bestpack.com.mx/logistica-3pl</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://www.bestpack.com.mx/consumibles-industriales</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://www.bestpack.com.mx/aviso-de-privacidad</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
 
   <!-- Industrias -->
   <url><loc>https://www.bestpack.com.mx/industria-automotriz</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
