@@ -92,6 +92,24 @@
   ]
 }
 </script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RR09NJHDQ2"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-RR09NJHDQ2');
+document.addEventListener('click', function(e){
+  var a = e.target && e.target.closest ? e.target.closest('a') : null; if(!a) return;
+  var h = a.getAttribute('href') || '';
+  if(h.indexOf('wa.me') > -1){ gtag('event','lead_whatsapp',{link_url:h}); }
+  else if(h.indexOf('tel:') === 0){ gtag('event','lead_llamada',{link_url:h}); }
+  else if(h.indexOf('mailto:') === 0){ gtag('event','lead_correo',{link_url:h}); }
+});
+document.addEventListener('submit', function(e){
+  if(e.target && e.target.tagName === 'FORM'){ gtag('event','lead_formulario',{form_id:e.target.id||''}); }
+});
+</script>
 </head>
 <body>
 
