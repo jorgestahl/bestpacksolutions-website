@@ -28,7 +28,7 @@
   /* Text */
   --text:   #eef3fb;
   --muted:  #9aa7bd;
-  --muted-2:#6c7a93;
+  --muted-2:#7a89a2;
   --white:  #ffffff;
 
   /* Effects */
@@ -321,7 +321,7 @@ p { color: var(--muted); }
 .evo .arrow { display: grid; place-items: center; color: var(--yellow); }
 .evo .arrow svg { width: 30px; height: 30px; }
 .evo-col { border-radius: var(--radius-lg); padding: 28px; border: 1px solid var(--border); background: var(--surface); border-left: 4px solid var(--accent, var(--muted-2)); }
-.evo-col h4 { text-transform: uppercase; letter-spacing: .08em; font-size: .95rem; color: var(--accent, var(--text)); margin-bottom: 14px; }
+.evo-col h3 { text-transform: uppercase; letter-spacing: .08em; font-size: .95rem; color: var(--accent, var(--text)); margin-bottom: 14px; }
 .evo-col ul { display: flex; flex-direction: column; gap: 12px; }
 .evo-col li { display: flex; align-items: center; gap: 10px; color: #d4dcec; font-size: .95rem; }
 .evo-col li svg { width: 20px; height: 20px; color: var(--accent, var(--blue-400)); flex-shrink: 0; }
