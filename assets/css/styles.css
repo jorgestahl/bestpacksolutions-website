@@ -1,3 +1,6 @@
+/* ===== v4: fallbacks métricos (CLS=0 en swap de fuentes) — calibrados en navegador ===== */
+@font-face { font-family: 'Sora-fb'; src: local('Arial'); size-adjust: 117%; ascent-override: 97%; descent-override: 29%; line-gap-override: 0%; }
+@font-face { font-family: 'Inter-fb'; src: local('Arial'); size-adjust: 105.46%; ascent-override: 97%; descent-override: 24%; line-gap-override: 0%; }
 /* ============================================================
    BestPack Solutions — Design System
    Paleta: Negro · Azul · Amarillo (acentos verde/morado)
@@ -41,8 +44,8 @@
   --gutter: clamp(18px, 4vw, 44px);
 
   /* Type */
-  --font-display: "Sora", "Segoe UI", system-ui, -apple-system, sans-serif;
-  --font-body: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-display: "Sora", "Sora-fb", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-body: "Inter", "Inter-fb", "Segoe UI", system-ui, -apple-system, sans-serif;
 
   --header-h: 76px;
 }
