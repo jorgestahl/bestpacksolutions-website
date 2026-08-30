@@ -2,6 +2,7 @@
 <html lang="es-MX">
 <head>
 <meta charset="UTF-8">
+<script>document.documentElement.classList.add("js");</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#070b12">
 
@@ -195,6 +196,7 @@ document.addEventListener('submit', function(e){
 <section class="hero" id="inicio">
   <div class="hero-media">
     <video autoplay muted loop playsinline poster="assets/img/hero-poster.jpg" preload="none">
+      <source data-src="assets/video/corporativo-bestpack-2026.webm" type="video/webm">
       <source data-src="assets/video/corporativo-bestpack-2026.mp4" type="video/mp4">
     </video>
   </div>
@@ -230,14 +232,14 @@ document.addEventListener('submit', function(e){
   <div class="container">
     <p class="center" style="font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-2);margin-bottom:22px">Empresas líderes confían en BestPack Solutions</p>
     <div class="clients">
-      <div class="client-logo reveal"><img src="assets/img/clientes/daikin.png" alt="Daikin" loading="lazy"></div>
-      <div class="client-logo reveal" data-delay="1"><img src="assets/img/clientes/magna.png" alt="Magna" loading="lazy"></div>
-      <div class="client-logo reveal" data-delay="2"><img src="assets/img/clientes/bimbo.png" alt="Bimbo" loading="lazy"></div>
-      <div class="client-logo reveal" data-delay="3"><img src="assets/img/clientes/loreal.png" alt="L'Oréal" loading="lazy"></div>
-      <div class="client-logo reveal" data-delay="4"><img src="assets/img/clientes/contitech.png" alt="ContiTech" loading="lazy"></div>
-      <div class="client-logo reveal"><img src="assets/img/clientes/daltile.png" alt="Daltile" loading="lazy"></div>
-      <div class="client-logo reveal" data-delay="1"><img src="assets/img/clientes/del-valle.png" alt="Jugos del Valle" loading="lazy"></div>
-      <div class="client-logo reveal" data-delay="2"><img src="assets/img/clientes/tecnopiso.png" alt="Tecnopiso" loading="lazy"></div>
+      <div class="client-logo reveal"><img src="assets/img/clientes/daikin.png" alt="Daikin" loading="eager" fetchpriority="low" width="320" height="97"></div>
+      <div class="client-logo reveal" data-delay="1"><img src="assets/img/clientes/magna.png" alt="Magna" loading="eager" fetchpriority="low" width="320" height="71"></div>
+      <div class="client-logo reveal" data-delay="2"><img src="assets/img/clientes/bimbo.png" alt="Bimbo" loading="eager" fetchpriority="low" width="320" height="135"></div>
+      <div class="client-logo reveal" data-delay="3"><img src="assets/img/clientes/loreal.png" alt="L'Oréal" loading="eager" fetchpriority="low" width="320" height="91"></div>
+      <div class="client-logo reveal" data-delay="4"><img src="assets/img/clientes/contitech.png" alt="ContiTech" loading="eager" fetchpriority="low" width="320" height="81"></div>
+      <div class="client-logo reveal"><img src="assets/img/clientes/daltile.png" alt="Daltile" loading="eager" fetchpriority="low" width="229" height="320"></div>
+      <div class="client-logo reveal" data-delay="1"><img src="assets/img/clientes/del-valle.png" alt="Jugos del Valle" loading="eager" fetchpriority="low" width="320" height="184"></div>
+      <div class="client-logo reveal" data-delay="2"><img src="assets/img/clientes/tecnopiso.png" alt="Tecnopiso" loading="eager" fetchpriority="low" width="320" height="90"></div>
     </div>
   </div>
 </section>

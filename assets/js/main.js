@@ -344,11 +344,11 @@
   /* ---------- Video hero: cargar solo en escritorio con buena conexión ---------- */
   var heroVideo = document.querySelector(".hero-media video");
   if (heroVideo) {
-    var vSource = heroVideo.querySelector("source[data-src]");
+    var vSources = heroVideo.querySelectorAll("source[data-src]");
     var conn = navigator.connection || {};
     var goodConn = !conn.saveData && conn.effectiveType !== "slow-2g" && conn.effectiveType !== "2g" && conn.effectiveType !== "3g";
-    if (vSource && window.innerWidth >= 1024 && goodConn) {
-      vSource.src = vSource.getAttribute("data-src");
+    if (vSources.length && window.innerWidth >= 1024 && goodConn) {
+      vSources.forEach(function (sEl) { sEl.src = sEl.getAttribute("data-src"); });
       heroVideo.load();
       var pp = heroVideo.play();
       if (pp && pp.catch) pp.catch(function () {});
