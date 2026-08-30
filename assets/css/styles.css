@@ -513,3 +513,12 @@ html.js .reveal.in { opacity: 1; transform: none; }
 .field input[type="file"]::file-selector-button { background:#1b2a40; border:1px solid #3a4a68; color:#cdd6e8; border-radius:8px; padding:6px 12px; margin-right:10px; cursor:pointer; font-size:.85rem; }
 .field input[type="date"] { color-scheme: dark; }
 
+
+/* ===== v3: hero visible de inmediato (LCP) — animación CSS sin esperar JS ===== */
+html.js .hero .reveal { opacity: 1; transform: none; animation: bpUp .6s cubic-bezier(.2,.7,.3,1) both; }
+html.js .hero .reveal[data-delay="1"] { animation-delay: .08s; }
+html.js .hero .reveal[data-delay="2"] { animation-delay: .16s; }
+html.js .hero .reveal[data-delay="3"] { animation-delay: .24s; }
+html.js .hero .reveal[data-delay="4"] { animation-delay: .32s; }
+@keyframes bpUp { from { transform: translateY(26px); } to { transform: none; } }
+@media (prefers-reduced-motion: reduce) { html.js .hero .reveal { animation: none; } }
