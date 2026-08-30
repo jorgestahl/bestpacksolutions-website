@@ -501,3 +501,14 @@ p { color: var(--muted); }
   .stat { padding: 20px 18px; }
   .hero-badges { gap: 8px 16px; }
 }
+
+/* ===== v2: formulario de captura real de leads ===== */
+.form-msg.err { display:none; background: rgba(220,60,60,.12); border:1px solid rgba(220,60,60,.45); color:#ffb4b4; padding:12px 16px; border-radius:12px; margin-bottom:16px; font-size:.95rem; }
+.consent-row { display:flex; gap:10px; align-items:flex-start; margin:4px 0 16px; }
+.consent-row input[type="checkbox"] { margin-top:4px; width:16px; height:16px; accent-color:#ffc20a; flex-shrink:0; }
+.consent-row label { font-size:.85rem; color:#aab6cc; line-height:1.5; }
+.consent-row label a { color:#ffc20a; text-decoration:underline; }
+.hp { position:absolute !important; left:-9999px !important; top:auto; width:1px; height:1px; overflow:hidden; }
+.field input[type="file"] { padding:9px 12px; font-size:.88rem; cursor:pointer; }
+.field input[type="file"]::file-selector-button { background:#1b2a40; border:1px solid #3a4a68; color:#cdd6e8; border-radius:8px; padding:6px 12px; margin-right:10px; cursor:pointer; font-size:.85rem; }
+.field input[type="date"] { color-scheme: dark; }

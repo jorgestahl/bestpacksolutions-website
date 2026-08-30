@@ -601,33 +601,54 @@ document.addEventListener('submit', function(e){
       </div>
 
       <div class="form-card reveal" data-delay="1">
-        <div class="form-msg ok" id="formMsg">¡Gracias! Abrimos WhatsApp con tu mensaje listo para enviar. Si no se abrió, escríbenos a contacto@bpsmx.com.</div>
+        <div class="form-msg ok" id="formMsg" style="display:none">¡Gracias! Tu solicitud quedó registrada y nuestro equipo comercial te contactará en horario hábil.</div>
+        <div class="form-msg err" id="formErr" role="alert" style="display:none"></div>
         <form id="cotizaForm" novalidate>
           <div class="form-row">
             <div class="field"><label for="nombre">Nombre <span class="req">*</span></label><input id="nombre" name="nombre" type="text" required autocomplete="name"></div>
             <div class="field"><label for="empresa">Empresa</label><input id="empresa" name="empresa" type="text" autocomplete="organization"></div>
           </div>
           <div class="form-row">
+            <div class="field"><label for="puesto">Puesto</label><input id="puesto" name="puesto" type="text" autocomplete="organization-title" placeholder="Ej. Compras, Logística, Ingeniería"></div>
             <div class="field"><label for="email">Correo <span class="req">*</span></label><input id="email" name="email" type="email" required autocomplete="email"></div>
+          </div>
+          <div class="form-row">
             <div class="field"><label for="telefono">Teléfono</label><input id="telefono" name="telefono" type="tel" autocomplete="tel"></div>
+            <div class="field"><label for="ciudad">Ciudad y planta de destino</label><input id="ciudad" name="ciudad" type="text" placeholder="Ej. Zona Industrial SLP, planta 2"></div>
           </div>
-          <div class="field">
-            <label for="producto">Producto de interés</label>
-            <select id="producto" name="producto">
-              <option value="Tarimas de madera nuevas">Tarimas de madera nuevas</option>
-              <option value="Tarimas recicladas">Tarimas recicladas</option>
-              <option value="Tarimas para exportación (HT / NOM-144 / ISPM-15)">Tarimas para exportación (HT)</option>
-              <option value="Huacales y embalajes especiales">Huacales y embalajes especiales</option>
-              <option value="Cajas de cartón corrugado">Cajas de cartón corrugado</option>
-              <option value="Empaque retornable">Empaque retornable</option>
-              <option value="Logística / 3PL">Logística / 3PL</option>
-              <option value="Consumibles industriales">Consumibles industriales</option>
-              <option value="Otro / proyecto especial">Otro / proyecto especial</option>
-            </select>
+          <div class="form-row">
+            <div class="field">
+              <label for="division">División / servicio <span class="req">*</span></label>
+              <select id="division" name="division" required>
+                <option value="" disabled selected>Selecciona una división</option>
+                <option value="Tarimas de madera">Tarimas de madera</option>
+                <option value="Cajas de cartón corrugado">Cajas de cartón corrugado</option>
+                <option value="Almacenaje y logística 3PL">Almacenaje y logística 3PL</option>
+                <option value="Empaque retornable">Empaque retornable</option>
+                <option value="Consumibles industriales">Consumibles industriales</option>
+                <option value="Otro / proyecto especial">Otro / proyecto especial</option>
+              </select>
+            </div>
+            <div class="field"><label for="producto">Producto</label><input id="producto" name="producto" type="text" placeholder="Ej. tarima 48x40 HT, caja troquelada, bins ESD"></div>
           </div>
-          <div class="field"><label for="mensaje">Mensaje <span class="req">*</span></label><textarea id="mensaje" name="mensaje" required placeholder="Cuéntanos cantidades, medidas (ej. 48x40), uso y plaza de entrega."></textarea></div>
+          <div class="form-row">
+            <div class="field"><label for="volumen">Volumen estimado</label><input id="volumen" name="volumen" type="text" placeholder="Ej. 500 pzas/semana"></div>
+            <div class="field"><label for="frecuencia">Frecuencia</label><input id="frecuencia" name="frecuencia" type="text" placeholder="Única, semanal, mensual…"></div>
+          </div>
+          <div class="form-row">
+            <div class="field"><label for="fecha_requerida">Fecha requerida</label><input id="fecha_requerida" name="fecha_requerida" type="date"></div>
+            <div class="field"><label for="adjunto">Plano o especificación (máx. 3 MB)</label><input id="adjunto" name="adjunto" type="file" accept=".pdf,.png,.jpg,.jpeg,.webp,.dwg,.dxf,.xlsx,.docx"></div>
+          </div>
+          <div class="field"><label for="mensaje">Descripción del proyecto <span class="req">*</span></label><textarea id="mensaje" name="mensaje" required placeholder="Cuéntanos cantidades, medidas (ej. 48x40), uso, carga y plaza de entrega."></textarea></div>
+          <div class="consent-row">
+            <input id="consent" name="consent" type="checkbox" required>
+            <label for="consent">Acepto el <a href="/aviso-de-privacidad" target="_blank" rel="noopener">aviso de privacidad</a> y autorizo a BestPack Solutions a contactarme sobre esta solicitud. <span class="req">*</span></label>
+          </div>
+          <div class="hp" aria-hidden="true"><label for="sitio">Sitio web</label><input id="sitio" name="sitio" type="text" tabindex="-1" autocomplete="off"></div>
+          <input type="hidden" id="ts_render" name="ts_render" value="">
           <button type="submit" class="btn btn-primary btn-lg btn-block">Enviar cotización</button>
-          <p class="form-note">Al enviar, se abrirá WhatsApp con tu información lista. También puedes llamarnos al 444 829 0377.</p>
+          <a id="waFallback" class="btn btn-wa btn-lg btn-block" style="display:none;margin-top:10px" target="_blank" rel="noopener">Enviar por WhatsApp</a>
+          <p class="form-note">Tu solicitud llega directo a nuestro equipo comercial. También puedes escribirnos por <a href="https://wa.me/524448290377" target="_blank" rel="noopener" style="color:#ffc20a">WhatsApp</a> o llamar al 444 829 0377.</p>
         </form>
       </div>
     </div>
