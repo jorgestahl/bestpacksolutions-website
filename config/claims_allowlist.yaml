@@ -1,0 +1,35 @@
+# Allowlist de claims — BestPack Solutions
+# Validado: 2026-08-30 · Aprobación: dirección (prompt maestro)
+# NOTA: impresion_4_tintas pendiente de confirmación verbal (contradice brief 2-tintas)
+version: 1
+validated: 2026-08-30
+claims:
+  produccion_actual:
+    aprobado: "más de 150,000 tarimas al mes"
+    variantes: ["Más de 150,000 tarimas producidas al mes", "Producción actual superior a 150,000 tarimas mensuales", "Fabricamos más de 150,000 tarimas al mes", "Más de 150 mil tarimas al mes"]
+    prohibido: ["170,000", "capacidad de 150,000"]
+    paginas: all
+  capacidad_instalada:
+    aprobado: "capacidad instalada de hasta 350,000 tarimas mensuales"
+    prohibido: ["2 millones al año", "producción de 350,000"]
+    paginas: all
+  impresion_carton:
+    aprobado: "impresión de hasta 4 tintas"
+    prohibido: ["2 tintas", "dos tintas"]
+    requiere_aprobacion: "CONFIRMACIÓN VERBAL JORGE PENDIENTE (30-ago)"
+    paginas: [index, cajas-de-carton-corrugado, industrias, regionales, faq, schema]
+  ubicaciones:
+    aprobado: "planta productiva en San Luis Potosí y bodega de distribución en Saltillo"
+    prohibido: ["dos plantas", "planta Saltillo", "sedes SLP · Saltillo", "instalaciones fuera de SLP/Saltillo"]
+    paginas: all
+  tresPL:
+    aprobado: "operación de almacenaje y servicios 3PL en San Luis Potosí"
+    prohibido: ["3PL en SLP y Saltillo", "centro 3PL Saltillo"]
+    paginas: [logistica-3pl, cobertura, industria-farmaceutica]
+  almacenaje_cifras:
+    aprobado: ["15,000 m²", "+30 cámaras", "acceso 24/7"]
+    nota: "15,000 m² confirmado por dirección 30-ago; cámaras/24-7 del brief de dirección. NO extender a Saltillo."
+  farmaceutica:
+    aprobado: "experiencia atendiendo requerimientos de empaque industrial para el sector farmacéutico (secundario y terciario)"
+    prohibido: ["grado farmacéutico", "grado médico", "GMP", "GDP", "COFEPRIS", "estéril", "cadena fría", "temperatura controlada", "empaque primario", "sala limpia", "ISO 15378", "FEFO", "trazabilidad farmacéutica", "almacén de medicamentos"]
+    requiere_aprobacion: ["casos de éxito", "logos", "volúmenes", "dispositivos médicos"]

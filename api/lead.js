@@ -90,6 +90,17 @@ module.exports = async (req, res) => {
       frecuencia: clean(b.frecuencia, 120),
       fecha_requerida: clean(b.fecha_requerida, 40),
     };
+    // Campos adicionales (p.ej. formulario farmacéutico)
+    const extras = {};
+    if (b.extras && typeof b.extras === "object") {
+      Object.keys(b.extras).slice(0, 20).forEach((k) => {
+        const v = clean(String(b.extras[k]), 200);
+        if (v) extras[clean(k, 40)] = v;
+      });
+    }
+    const REG_RX = /primario|contacto directo|fr[ií]a|temperatura controlada|controlad[oa]s?|GMP|GDP|COFEPRIS|est[eé]ril|medicamento/i;
+    const requiereValidacion = Object.values(extras).some((v) => REG_RX.test(v));
+
     const meta = b.meta || {};
     const metaClean = {
       url_origen: clean(meta.url, 300),
@@ -142,6 +153,7 @@ module.exports = async (req, res) => {
       </table>
       <h3 style="font-family:Arial,sans-serif">Proyecto</h3>
       <p style="font-family:Arial,sans-serif;font-size:14px;white-space:pre-wrap">${esc(mensaje)}</p>
+      ${Object.keys(extras).length ? `<h3 style="font-family:Arial,sans-serif">Datos del requerimiento (formulario especializado)</h3>${requiereValidacion ? '<p style="font-family:Arial,sans-serif;color:#b00020"><b>⚠ Este requerimiento incluye condiciones regulatorias o de contacto directo: evaluar individualmente antes de cotizar.</b></p>' : ""}<table style="font-family:Arial,sans-serif;font-size:13px;border-collapse:collapse">${Object.entries(extras).map(([k,v])=>row(k,v)).join("")}</table>` : ""}
       <h3 style="font-family:Arial,sans-serif">Origen</h3>
       <table style="font-family:Arial,sans-serif;font-size:12px;color:#555;border-collapse:collapse">
         ${row("Página", metaClean.url_origen)}
@@ -159,7 +171,7 @@ module.exports = async (req, res) => {
       from: FROM,
       to: TO,
       reply_to: email,
-      subject: `[RFQ web] ${division} — ${datos.empresa || nombre}`,
+      subject: `${requiereValidacion ? "[REQUIERE VALIDACIÓN REGULATORIA] " : ""}[RFQ web]${extras.industria ? " " + extras.industria + " —" : ""} ${division} — ${datos.empresa || nombre}`,
       html,
     };
     if (attachments) payload.attachments = attachments;

@@ -294,6 +294,11 @@
           ts_render: tsField ? tsField.value : "",
           meta: getAttribution()
         };
+        var extras = {};
+        document.querySelectorAll('[data-lead-extra]').forEach(function (el) {
+          if (el.id && el.value && String(el.value).trim()) extras[el.id] = String(el.value).trim().slice(0, 200);
+        });
+        if (Object.keys(extras).length) payload.extras = extras;
         if (adjunto) payload.adjunto = adjunto;
         return fetch("/api/lead", {
           method: "POST",

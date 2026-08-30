@@ -1,0 +1,8 @@
+# Cómo seleccionar cajas de cartón corrugado para productos farmacéuticos
+**Estado:** BORRADOR — no desplegar · **Autor:** Equipo técnico de BestPack · **Revisor:** [PENDIENTE dirección] · **Fecha borrador:** 2026-08-30 · **Fuentes a citar:** técnicas/primarias según tema (FAO-IPPC, SEMARNAT, DIN 55473)
+
+**Intención:** compra técnica de cajas secundarias. **Keyword:** cajas de cartón para industria farmacéutica.
+
+Puntos a desarrollar: (1) **Resistencia**: elegir flauta y combinada según peso del contenido y estiba esperada; el error común es sobre-especificar "por seguridad" pagando de más, o sub-especificar y aplastar producto en la base de la estiba. (2) **Dimensiones**: la caja debe cerrar con holgura mínima; el vacío interno se controla con insertos y separadores, no con relleno improvisado. (3) **Estiba y tarima**: diseñar la caja para el patrón de estiba de la tarima (48x40 típica) evitando voladizos que restan hasta un tercio de la resistencia. (4) **Humedad ambiental**: el corrugado pierde resistencia con humedad; en almacenes o rutas húmedas considerar combinadas de mayor gramaje y desecantes en la unidad de carga. (5) **Insertos y separadores**: protegen frascos y estuches del microimpacto; se especifican por producto. (6) **Impresión**: identificación clara del SKU, lote visible por cara externa, advertencias de manejo — hasta 4 tintas. (7) **Manejo logístico**: probar la caja en la ruta real (vibración, transbordos) antes de liberar la especificación.
+
+**Prohibido en el artículo:** recomendar contacto directo con el medicamento, hablar de grado farmacéutico o esterilidad. Enlaces: /cajas-de-carton-corrugado, /industria-farmaceutica, /blog/cuanto-peso-soporta-una-tarima.
