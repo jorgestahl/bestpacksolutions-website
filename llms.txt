@@ -19,7 +19,7 @@
 - [Tarimas para exportación HT NOM-144 / ISPM-15](https://www.bestpack.com.mx/tarimas-para-exportacion): tratamiento térmico y sello IPPC para aduana.
 - [Tarimas recicladas](https://www.bestpack.com.mx/tarimas-recicladas): reacondicionadas, económicas y sustentables.
 - [Huacales de madera](https://www.bestpack.com.mx/huacales-de-madera): huacales, cajones y embalaje marítimo para exportación.
-- [Cajas de cartón corrugado](https://www.bestpack.com.mx/cajas-de-carton-corrugado): regulares, troqueladas, agrícolas e insertos a la medida; impresión de hasta 4 tintas.
+- [Cajas de cartón corrugado](https://www.bestpack.com.mx/cajas-de-carton-corrugado): regulares, troqueladas, agrícolas e insertos a la medida; impresión de hasta 4 tintas. También contenedores de cartón con tarima de madera para manejo a granel y octavines (contenedores octagonales sobre tarima, con liner de polietileno) para resina plástica, pellet y granulado.
 - [Empaque retornable industrial](https://www.bestpack.com.mx/empaque-retornable): totes, bins, coroplast, ESD y charolas termoformadas.
 - [Logística y 3PL](https://www.bestpack.com.mx/logistica-3pl): almacenaje (15,000 m²), cross dock, picking, packing e inventario administrado (VMI) en San Luis Potosí.
 - [Consumibles industriales](https://www.bestpack.com.mx/consumibles-industriales): stretch film, fleje, cintas, desecantes y bolsas ESD/VCI.
@@ -85,7 +85,7 @@ The full site is available in English under /en/ (same content, hreflang-linked)
 - [Heat-treated export pallets (ISPM 15 / NOM-144)](https://www.bestpack.com.mx/en/export-pallets-heat-treated)
 - [Recycled pallets](https://www.bestpack.com.mx/en/recycled-pallets)
 - [Wooden crates](https://www.bestpack.com.mx/en/wooden-crates)
-- [Corrugated boxes](https://www.bestpack.com.mx/en/corrugated-boxes)
+- [Corrugated boxes, palletized bulk containers & octabins for plastic resins](https://www.bestpack.com.mx/en/corrugated-boxes)
 - [Returnable packaging](https://www.bestpack.com.mx/en/returnable-packaging)
 - [3PL logistics & warehousing in San Luis Potosí](https://www.bestpack.com.mx/en/3pl-logistics-mexico)
 - [Industrial packaging supplies](https://www.bestpack.com.mx/en/industrial-packaging-supplies)
