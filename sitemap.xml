@@ -3,15 +3,15 @@
   <url>
     <loc>https://www.bestpack.com.mx/</loc>
     <xhtml:link rel="alternate" hreflang="es-MX" href="https://www.bestpack.com.mx/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.bestpack.com.mx/en/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.bestpack.com.mx/en"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.bestpack.com.mx/"/>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://www.bestpack.com.mx/en/</loc>
+    <loc>https://www.bestpack.com.mx/en</loc>
     <xhtml:link rel="alternate" hreflang="es-MX" href="https://www.bestpack.com.mx/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.bestpack.com.mx/en/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.bestpack.com.mx/en"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://www.bestpack.com.mx/"/>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>

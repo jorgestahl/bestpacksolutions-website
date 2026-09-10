@@ -78,7 +78,7 @@
 
 ## English version (for US / Canada buyers)
 The full site is available in English under /en/ (same content, hreflang-linked):
-- [Home](https://www.bestpack.com.mx/en/)
+- [Home](https://www.bestpack.com.mx/en)
 - [Wooden pallet manufacturer in Mexico](https://www.bestpack.com.mx/en/pallet-manufacturers-mexico)
 - [Industrial packaging solutions](https://www.bestpack.com.mx/en/industrial-packaging)
 - [Wooden pallets](https://www.bestpack.com.mx/en/wooden-pallets)
