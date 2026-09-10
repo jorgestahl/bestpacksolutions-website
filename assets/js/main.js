@@ -7,13 +7,45 @@
   "use strict";
 
   var WA_NUMBER = "524448290377";
+  var LANG_EN = ((document.documentElement.getAttribute("lang") || "").toLowerCase().indexOf("en") === 0);
+
+  /* ---------- Textos de UI (ES / EN según <html lang>) ---------- */
+  var T = LANG_EN ? {
+    fileTooBig: "The file is larger than 3 MB. Compress it or send it later by email/WhatsApp; you can submit your request without an attachment.",
+    consent: "To send you a quote we need your consent to the privacy policy.",
+    sending: "Sending…",
+    thanksUrl: "/en/quote-received",
+    notConfigured: "We couldn't register your request right now. Your details are still here: send it to us on WhatsApp with one click, or call us at +52 444 829 0377.",
+    validation: "Please review the highlighted fields: name, email, division and project description are required.",
+    fileLimit: "The file exceeds the 3 MB limit. Remove or compress it and try again.",
+    rateLimited: "We detected too many submissions in a row. Wait a moment and try again, or message us on WhatsApp.",
+    unexpected: "An unexpected error occurred. Try again or contact us on WhatsApp or at +52 444 829 0377.",
+    offline: "No connection to the server. Your details are still here: try again or send us the request on WhatsApp.",
+    wa: { title: "Quote request — BestPack Solutions", name: "Name", company: "Company", division: "Division", product: "Product", volume: "Volume", city: "City/plant", detail: "Details" }
+  } : {
+    fileTooBig: "El archivo supera 3 MB. Comprímelo o envíalo después por correo/WhatsApp; tu solicitud puede enviarse sin adjunto.",
+    consent: "Para enviarte la cotización necesitamos tu consentimiento sobre el aviso de privacidad.",
+    sending: "Enviando…",
+    thanksUrl: "/gracias-cotizacion",
+    notConfigured: "No pudimos registrar tu solicitud en este momento. Tus datos siguen aquí: envíanosla por WhatsApp con un clic, o llámanos al 444 829 0377.",
+    validation: "Revisa los campos marcados: nombre, correo, división y descripción del proyecto son necesarios.",
+    fileLimit: "El archivo supera el límite de 3 MB. Quítalo o comprímelo e intenta de nuevo.",
+    rateLimited: "Detectamos demasiados envíos seguidos. Espera un momento e intenta otra vez, o escríbenos por WhatsApp.",
+    unexpected: "Ocurrió un error inesperado. Intenta de nuevo o contáctanos por WhatsApp o al 444 829 0377.",
+    offline: "Sin conexión con el servidor. Tus datos siguen aquí: intenta de nuevo o envíanos la solicitud por WhatsApp.",
+    wa: { title: "Solicitud de cotización BestPack", name: "Nombre", company: "Empresa", division: "División", product: "Producto", volume: "Volumen", city: "Ciudad/planta", detail: "Detalle" }
+  };
 
   /* ---------- División por página ---------- */
   var DIV_EXACT = {
     "/cajas-de-carton-corrugado": "Cajas de cartón corrugado",
     "/logistica-3pl": "Almacenaje y logística 3PL",
     "/empaque-retornable": "Empaque retornable",
-    "/consumibles-industriales": "Consumibles industriales"
+    "/consumibles-industriales": "Consumibles industriales",
+    "/en/corrugated-boxes": "Cajas de cartón corrugado",
+    "/en/3pl-logistics-mexico": "Almacenaje y logística 3PL",
+    "/en/returnable-packaging": "Empaque retornable",
+    "/en/industrial-packaging-supplies": "Consumibles industriales"
   };
   var DIV_SLUG = {
     madera: "Tarimas de madera",
@@ -26,7 +58,7 @@
   function pageDivision(path) {
     path = path || location.pathname.replace(/\/$/, "") || "/";
     if (DIV_EXACT[path]) return DIV_EXACT[path];
-    if (/^\/(tarimas|fabricantes-de-tarimas|huacales|embalajes|industria-automotriz)/.test(path)) return "Tarimas de madera";
+    if (/^\/(en\/)?(tarimas|fabricantes-de-tarimas|huacales|embalajes|industria-automotriz|pallets|pallet-manufacturers|wooden-pallets|wooden-crates|export-pallets|recycled-pallets|industrial-packaging$|automotive-industry)/.test(path)) return "Tarimas de madera";
     return "";
   }
   function track(name, params) {
@@ -133,7 +165,7 @@
 
   /* ---------- Contadores animados ---------- */
   function formatNumber(n, withComma) {
-    return withComma ? n.toLocaleString("es-MX") : String(n);
+    return withComma ? n.toLocaleString(LANG_EN ? "en-US" : "es-MX") : String(n);
   }
   function animateCount(el) {
     var target = parseInt(el.getAttribute("data-count"), 10);
@@ -192,6 +224,7 @@
     var msgErr = document.getElementById("formErr");
     var waFallback = document.getElementById("waFallback");
     var btnSubmit = form.querySelector('button[type="submit"]');
+    var btnLabel = btnSubmit ? btnSubmit.textContent : "";
     var tsField = document.getElementById("ts_render");
     if (tsField) tsField.value = String(Date.now());
 
@@ -225,7 +258,7 @@
         var f = fileInput.files && fileInput.files[0];
         if (!f) return;
         if (f.size > 3 * 1024 * 1024) {
-          showError("El archivo supera 3 MB. Comprímelo o envíalo después por correo/WhatsApp; tu solicitud puede enviarse sin adjunto.");
+          showError(T.fileTooBig);
           fileInput.value = "";
           return;
         }
@@ -244,16 +277,23 @@
     }
     function v(id) { var el = document.getElementById(id); return el ? el.value.trim() : ""; }
 
+    function divisionLabel() {
+      var s = document.getElementById("division");
+      if (!s) return "";
+      if (s.tagName === "SELECT" && s.selectedIndex >= 0) return s.options[s.selectedIndex].text;
+      return s.value;
+    }
     function buildWaText() {
+      var w = T.wa;
       return encodeURIComponent(
-        "Solicitud de cotización BestPack\n" +
-        "Nombre: " + v("nombre") + "\n" +
-        "Empresa: " + (v("empresa") || "—") + "\n" +
-        "División: " + currentDivision() + "\n" +
-        "Producto: " + (v("producto") || "—") + "\n" +
-        "Volumen: " + (v("volumen") || "—") + "\n" +
-        "Ciudad/planta: " + (v("ciudad") || "—") + "\n" +
-        "Detalle: " + v("mensaje")
+        w.title + "\n" +
+        w.name + ": " + v("nombre") + "\n" +
+        w.company + ": " + (v("empresa") || "—") + "\n" +
+        w.division + ": " + divisionLabel() + "\n" +
+        w.product + ": " + (v("producto") || "—") + "\n" +
+        w.volume + ": " + (v("volumen") || "—") + "\n" +
+        w.city + ": " + (v("ciudad") || "—") + "\n" +
+        w.detail + ": " + v("mensaje")
       );
     }
 
@@ -276,10 +316,10 @@
       if (!form.checkValidity()) { form.reportValidity(); return; }
       var consent = document.getElementById("consent");
       if (consent && !consent.checked) {
-        showError("Para enviarte la cotización necesitamos tu consentimiento sobre el aviso de privacidad.");
+        showError(T.consent);
         return;
       }
-      if (btnSubmit) { btnSubmit.disabled = true; btnSubmit.textContent = "Enviando…"; }
+      if (btnSubmit) { btnSubmit.disabled = true; btnSubmit.textContent = T.sending; }
 
       var file = fileInput && fileInput.files ? fileInput.files[0] : null;
       readFileB64(file).then(function (adjunto) {
@@ -311,37 +351,37 @@
         if (res.body && res.body.ok) {
           track("generate_lead", { division: currentDivision(), method: "form" });
           try { sessionStorage.setItem("bp_lead_ok", "1"); } catch (e) {}
-          setTimeout(function () { location.href = "/gracias-cotizacion"; }, 250);
+          setTimeout(function () { location.href = T.thanksUrl; }, 250);
           return;
         }
         var code = res.body && res.body.code;
         if (code === "not_configured" || code === "send_failed" || code === "server_error") {
-          showError("No pudimos registrar tu solicitud en este momento. Tus datos siguen aquí: envíanosla por WhatsApp con un clic, o llámanos al 444 829 0377.");
+          showError(T.notConfigured);
           if (waFallback) {
             waFallback.href = "https://wa.me/" + WA_NUMBER + "?text=" + buildWaText();
             waFallback.style.display = "inline-flex";
           }
         } else if (code === "validation") {
-          showError("Revisa los campos marcados: nombre, correo, división y descripción del proyecto son necesarios.");
+          showError(T.validation);
         } else if (code === "file_too_large") {
-          showError("El archivo supera el límite de 3 MB. Quítalo o comprímelo e intenta de nuevo.");
+          showError(T.fileLimit);
         } else if (code === "rate_limited" || code === "too_fast") {
-          showError("Detectamos demasiados envíos seguidos. Espera un momento e intenta otra vez, o escríbenos por WhatsApp.");
+          showError(T.rateLimited);
           if (waFallback) {
             waFallback.href = "https://wa.me/" + WA_NUMBER + "?text=" + buildWaText();
             waFallback.style.display = "inline-flex";
           }
         } else {
-          showError("Ocurrió un error inesperado. Intenta de nuevo o contáctanos por WhatsApp o al 444 829 0377.");
+          showError(T.unexpected);
         }
       }).catch(function () {
-        showError("Sin conexión con el servidor. Tus datos siguen aquí: intenta de nuevo o envíanos la solicitud por WhatsApp.");
+        showError(T.offline);
         if (waFallback) {
           waFallback.href = "https://wa.me/" + WA_NUMBER + "?text=" + buildWaText();
           waFallback.style.display = "inline-flex";
         }
       }).finally(function () {
-        if (btnSubmit) { btnSubmit.disabled = false; btnSubmit.textContent = "Enviar cotización"; }
+        if (btnSubmit) { btnSubmit.disabled = false; btnSubmit.textContent = btnLabel || "Enviar cotización"; }
       });
     });
   }

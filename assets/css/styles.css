@@ -172,6 +172,11 @@ p { color: var(--muted); }
 .nav-links a:hover { color: #fff; background: rgba(255, 255, 255, .05); }
 .nav-actions { display: flex; align-items: center; gap: 12px; }
 
+/* Language switch (ES / EN) */
+.lang-switch { display: inline-flex; align-items: center; justify-content: center; min-width: 40px; height: 34px; padding: 0 10px; border: 1px solid rgba(255, 255, 255, .18); border-radius: 9px; font-size: 0.78rem; font-weight: 600; letter-spacing: .06em; color: #c7d0e2; text-decoration: none; transition: color .2s, background .2s, border-color .2s; }
+.lang-switch:hover { color: #fff; background: rgba(255, 255, 255, .06); border-color: rgba(255, 255, 255, .32); }
+@media (max-width: 480px) { .lang-switch { min-width: 34px; height: 32px; padding: 0 7px; } }
+
 /* Nav dropdown (Soluciones) */
 .nav-dd { position: relative; }
 .nav-dd-toggle { display: inline-flex; align-items: center; gap: 6px; font-family: var(--font-body); font-size: 0.93rem; font-weight: 500; color: #c7d0e2; padding: 9px 14px; border-radius: 9px; cursor: pointer; transition: color .2s, background .2s; }
