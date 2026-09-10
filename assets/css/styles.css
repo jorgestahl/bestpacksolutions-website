@@ -172,10 +172,25 @@ p { color: var(--muted); }
 .nav-links a:hover { color: #fff; background: rgba(255, 255, 255, .05); }
 .nav-actions { display: flex; align-items: center; gap: 12px; }
 
-/* Language switch (ES / EN) */
-.lang-switch { display: inline-flex; align-items: center; justify-content: center; min-width: 40px; height: 34px; padding: 0 10px; border: 1px solid rgba(255, 255, 255, .18); border-radius: 9px; font-size: 0.78rem; font-weight: 600; letter-spacing: .06em; color: #c7d0e2; text-decoration: none; transition: color .2s, background .2s, border-color .2s; }
-.lang-switch:hover { color: #fff; background: rgba(255, 255, 255, .06); border-color: rgba(255, 255, 255, .32); }
-@media (max-width: 480px) { .lang-switch { min-width: 34px; height: 32px; padding: 0 7px; } }
+/* Selector de idioma (ES / EN) */
+.lang-toggle { display: inline-flex; align-items: center; height: 34px; border: 1px solid rgba(255, 255, 255, .22); border-radius: 9px; overflow: hidden; font-family: var(--font-display); font-size: 0.76rem; font-weight: 700; letter-spacing: .06em; line-height: 1; }
+.lang-toggle a, .lang-toggle span { display: inline-flex; align-items: center; justify-content: center; min-width: 33px; height: 100%; padding: 0 9px; text-decoration: none; transition: color .2s, background .2s; }
+.lang-toggle .is-on { background: var(--yellow); color: #19130a; }
+.lang-toggle .is-off { color: #c7d0e2; }
+.lang-toggle .is-off:hover { color: #fff; background: rgba(255, 255, 255, .1); }
+@media (max-width: 480px) { .lang-toggle { height: 31px; font-size: 0.7rem; } .lang-toggle a, .lang-toggle span { min-width: 27px; padding: 0 6px; } }
+
+/* Header compacto en celulares angostos (el selector de idioma suma ancho) */
+@media (max-width: 420px) {
+  .nav { gap: 12px; }
+  .nav-actions { gap: 8px; }
+  .site-header .container { padding-inline: 14px; }
+  .nav-actions .nav-cta { padding: 12px 17px; font-size: 0.9rem; }
+}
+@media (max-width: 380px) {
+  /* El CTA "Cotizar" del header se omite: la barra fija inferior (.mcta) ya lo ofrece */
+  .nav-actions .nav-cta { display: none; }
+}
 
 /* Nav dropdown (Soluciones) */
 .nav-dd { position: relative; }
