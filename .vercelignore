@@ -1,0 +1,5 @@
+# Documentos internos de trabajo: se conservan en el repositorio, pero NO se publican en el sitio.
+# (Antes respondían 200 en www.bestpack.com.mx/docs/…, /reports/… y /config/…)
+/docs
+/reports
+/config

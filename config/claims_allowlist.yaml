@@ -33,3 +33,17 @@ claims:
     aprobado: "experiencia atendiendo requerimientos de empaque industrial para el sector farmacéutico (secundario y terciario)"
     prohibido: ["grado farmacéutico", "grado médico", "GMP", "GDP", "COFEPRIS", "estéril", "cadena fría", "temperatura controlada", "empaque primario", "sala limpia", "ISO 15378", "FEFO", "trazabilidad farmacéutica", "almacén de medicamentos"]
     requiere_aprobacion: ["casos de éxito", "logos", "volúmenes", "dispositivos médicos"]
+  entrega_mismo_dia:
+    aprobado: "entrega local el mismo día en San Luis Potosí"
+    validado: "2026-09-20 · confirmado por Jorge por escrito"
+    nota: "Jorge confirmó el compromiso sin dar condiciones (horario de corte, volumen, existencia). Usarlo solo para entrega LOCAL en SLP y sus zonas/parques; no extenderlo a otras ciudades ni a pedidos a la medida sin confirmarlo."
+    paginas: [tarimas-san-luis-potosi, tarimas-zona-industrial-san-luis-potosi, parques y zonas de SLP]
+  tipos_de_tarima:
+    aprobado: "tarimas nuevas, recicladas e híbridas (material nuevo combinado con reciclado)"
+    validado: "2026-09-20 · confirmado por Jorge por escrito"
+    nota: "Ante búsquedas de 'tarimas usadas' se responde con la oferta de tarimas recicladas. Jorge no mencionó venta de tarima usada tal cual: no afirmarla."
+    paginas: all
+  cobertura_parques_slp:
+    aprobado: "surtimos a todos los parques industriales de San Luis Potosí"
+    validado: "2026-09-20 · confirmado por Jorge por escrito"
+    paginas: [tarimas-san-luis-potosi, tarimas-zona-industrial-san-luis-potosi, parques y zonas de SLP, cobertura]

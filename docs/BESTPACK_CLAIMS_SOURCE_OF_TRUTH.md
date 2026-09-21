@@ -14,3 +14,6 @@
 | Farmacéutica | "Experiencia atendiendo requerimientos de empaque industrial para el sector farmacéutico" (secundario/terciario) | ver claims prohibidos §15 del prompt (GMP, GDP, COFEPRIS, estéril, cadena fría, grado farmacéutico/médico, primario, etc.) |
 | Verbos por división | Madera/Cartón: Fabricamos · Retornable: Diseñamos e integramos · 3PL: Operamos · Consumibles: Suministramos | "fabricamos todos los consumibles/plásticos" |
 | ISO | ISO 9001, 14001, 45001 como certificaciones generales | presentarlas como sustituto de GMP/GDP/COFEPRIS |
+| Entrega local (validado 2026-09-20 por Jorge) | "Entrega local el mismo día en San Luis Potosí" | extenderlo a otras ciudades o a pedidos a la medida sin confirmarlo; Jorge no dio condiciones de corte/volumen |
+| Tipos de tarima (validado 2026-09-20 por Jorge) | "Tarimas nuevas, recicladas e híbridas (material nuevo combinado con reciclado)" | afirmar venta de tarima usada tal cual; ante "tarimas usadas" se responde con recicladas |
+| Parques de SLP (validado 2026-09-20 por Jorge) | "Surtimos a todos los parques industriales de San Luis Potosí" | — |
