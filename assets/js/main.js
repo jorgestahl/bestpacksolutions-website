@@ -6,7 +6,7 @@
 (function () {
   "use strict";
 
-  var WA_NUMBER = "524448290377";
+  var WA_NUMBER = "524443574446";
   var LANG_EN = ((document.documentElement.getAttribute("lang") || "").toLowerCase().indexOf("en") === 0);
 
   /* ---------- Textos de UI (ES / EN según <html lang>) ---------- */
@@ -15,11 +15,11 @@
     consent: "To send you a quote we need your consent to the privacy policy.",
     sending: "Sending…",
     thanksUrl: "/en/quote-received",
-    notConfigured: "We couldn't register your request right now. Your details are still here: send it to us on WhatsApp with one click, or call us at +52 444 829 0377.",
+    notConfigured: "We couldn't register your request right now. Your details are still here: send it to us on WhatsApp with one click, or call us at +52 444 357 4446.",
     validation: "Please review the highlighted fields: name, email, division and project description are required.",
     fileLimit: "The file exceeds the 3 MB limit. Remove or compress it and try again.",
     rateLimited: "We detected too many submissions in a row. Wait a moment and try again, or message us on WhatsApp.",
-    unexpected: "An unexpected error occurred. Try again or contact us on WhatsApp or at +52 444 829 0377.",
+    unexpected: "An unexpected error occurred. Try again or contact us on WhatsApp or at +52 444 357 4446.",
     offline: "No connection to the server. Your details are still here: try again or send us the request on WhatsApp.",
     wa: { title: "Quote request — BestPack Solutions", name: "Name", company: "Company", division: "Division", product: "Product", volume: "Volume", city: "City/plant", detail: "Details" }
   } : {
@@ -27,11 +27,11 @@
     consent: "Para enviarte la cotización necesitamos tu consentimiento sobre el aviso de privacidad.",
     sending: "Enviando…",
     thanksUrl: "/gracias-cotizacion",
-    notConfigured: "No pudimos registrar tu solicitud en este momento. Tus datos siguen aquí: envíanosla por WhatsApp con un clic, o llámanos al 444 829 0377.",
+    notConfigured: "No pudimos registrar tu solicitud en este momento. Tus datos siguen aquí: envíanosla por WhatsApp con un clic, o llámanos al 444 357 4446.",
     validation: "Revisa los campos marcados: nombre, correo, división y descripción del proyecto son necesarios.",
     fileLimit: "El archivo supera el límite de 3 MB. Quítalo o comprímelo e intenta de nuevo.",
     rateLimited: "Detectamos demasiados envíos seguidos. Espera un momento e intenta otra vez, o escríbenos por WhatsApp.",
-    unexpected: "Ocurrió un error inesperado. Intenta de nuevo o contáctanos por WhatsApp o al 444 829 0377.",
+    unexpected: "Ocurrió un error inesperado. Intenta de nuevo o contáctanos por WhatsApp o al 444 357 4446.",
     offline: "Sin conexión con el servidor. Tus datos siguen aquí: intenta de nuevo o envíanos la solicitud por WhatsApp.",
     wa: { title: "Solicitud de cotización BestPack", name: "Nombre", company: "Empresa", division: "División", product: "Producto", volume: "Volumen", city: "Ciudad/planta", detail: "Detalle" }
   };
