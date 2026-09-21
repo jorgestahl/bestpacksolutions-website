@@ -50,7 +50,8 @@ module.exports = async (req, res) => {
       return;
     }
     const tsRender = parseInt(b.ts_render, 10) || 0;
-    if (tsRender && Date.now() - tsRender < 3000) {
+    const tsDelta = Date.now() - tsRender; // negativo = reloj del cliente adelantado: no es un bot
+    if (tsRender && tsDelta >= 0 && tsDelta < 3000) {
       res.status(429).json({ ok: false, code: "too_fast" });
       return;
     }

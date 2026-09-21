@@ -1,6 +1,10 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    { "source": "/cotizacion", "destination": "/cotizar", "statusCode": 301 },
+    { "source": "/contacto",   "destination": "/cotizar", "statusCode": 301 }
+  ],
   "headers": [
     { "source": "/assets/img/:path*",   "headers": [{ "key": "Cache-Control", "value": "public, max-age=2592000" }] },
     { "source": "/assets/video/:path*", "headers": [{ "key": "Cache-Control", "value": "public, max-age=2592000" }] },
