@@ -164,14 +164,14 @@ document.addEventListener('click', function(e){
             <div class="field"><label for="empresa">Empresa <span class="req">*</span></label><input id="empresa" name="empresa" type="text" required autocomplete="organization"></div>
           </div>
           <div class="form-row">
-            <div class="field"><label for="email">Correo <span class="req">*</span></label><input id="email" name="email" type="email" required pattern="[^\s@]+@[^\s@]+\.[^\s@]{2,}" title="Escribe un correo como nombre@empresa.com" autocomplete="email"></div>
             <div class="field"><label for="telefono">Teléfono / WhatsApp <span class="req">*</span></label><input id="telefono" name="telefono" type="tel" required autocomplete="tel"></div>
+            <div class="field"><label for="email">Correo</label><input id="email" name="email" type="email" pattern="[^\s@]+@[^\s@]+\.[^\s@]{2,}" title="Escribe un correo como nombre@empresa.com" autocomplete="email"></div>
           </div>
           <div class="form-row">
-            <div class="field"><label for="ciudad">Ciudad / planta de entrega <span class="req">*</span></label><input id="ciudad" name="ciudad" type="text" required placeholder="Ej. Zona Industrial SLP, planta 2"></div>
+            <div class="field"><label for="ciudad">Ciudad / planta de entrega</label><input id="ciudad" name="ciudad" type="text" placeholder="Ej. Zona Industrial SLP, planta 2"></div>
             <div class="field">
-              <label for="division">¿Qué quieres cotizar? <span class="req">*</span></label>
-              <select id="division" name="division" required>
+              <label for="division">¿Qué quieres cotizar?</label>
+              <select id="division" name="division">
                 <option value="" disabled selected>Selecciona una opción</option>
                 <option value="Tarimas de madera">Tarimas de madera</option>
                 <option value="Cajas de cartón corrugado">Cajas de cartón corrugado</option>

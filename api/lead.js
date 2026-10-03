@@ -72,8 +72,8 @@ module.exports = async (req, res) => {
     const mensaje = clean(b.mensaje, 4000);
     const errores = [];
     if (nombre.length < 2) errores.push("nombre");
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) errores.push("email");
-    if (!DIVISIONES.includes(division)) errores.push("division");
+    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) errores.push("email"); // opcional
+    if (division && !DIVISIONES.includes(division)) errores.push("division"); // opcional
     if (mensaje.length < 10) errores.push("mensaje");
     if (b.consent !== true) errores.push("consent");
     if (errores.length) {
@@ -171,10 +171,10 @@ module.exports = async (req, res) => {
     const payload = {
       from: FROM,
       to: TO,
-      reply_to: email,
-      subject: `${requiereValidacion ? "[REQUIERE VALIDACIÓN REGULATORIA] " : ""}[RFQ web]${extras.industria ? " " + extras.industria + " —" : ""} ${division} — ${datos.empresa || nombre}`,
+      subject: `${requiereValidacion ? "[REQUIERE VALIDACIÓN REGULATORIA] " : ""}[RFQ web]${extras.industria ? " " + extras.industria + " —" : ""} ${division || "Sin división"} — ${datos.empresa || nombre}`,
       html,
     };
+    if (email) payload.reply_to = email;
     if (attachments) payload.attachments = attachments;
 
     const r = await fetch("https://api.resend.com/emails", {
