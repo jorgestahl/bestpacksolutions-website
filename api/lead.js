@@ -6,7 +6,7 @@
  * Variables de entorno requeridas (Vercel → Settings → Environment Variables):
  *   RESEND_API_KEY  — API key de resend.com (obligatoria para enviar)
  *   LEAD_TO         — correo(s) destino, separados por coma
- *                     (default: contacto@bpsmx.com, jorge.stahl@bpsmx.com, carlos@bpsmx.com).
+ *                     (default: contacto@bpsmx.com).
  *                     Si LEAD_TO está definido, se usa tal cual y no se mezcla con el default.
  *   LEAD_FROM       — remitente verificado (default: BestPack Web <onboarding@resend.dev>)
  * Sin RESEND_API_KEY el endpoint responde 503 {code:"not_configured"} y el
@@ -23,7 +23,7 @@ const DIVISIONES = [
 ];
 
 const MAX_ADJUNTO_B64 = 4 * 1024 * 1024; // ~3 MB reales
-const DEFAULT_LEAD_TO = ["contacto@bpsmx.com", "jorge.stahl@bpsmx.com", "carlos@bpsmx.com"];
+const DEFAULT_LEAD_TO = ["contacto@bpsmx.com"];
 const rateBucket = globalThis.__bpRate || (globalThis.__bpRate = new Map());
 
 function recipientsFrom(raw) {
