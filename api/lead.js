@@ -2,15 +2,21 @@
  * BestPack Solutions — Captura real de leads (RFQ)
  * Vercel Serverless Function: POST /api/lead
  *
- * Éxito (200 {ok:true}) SOLO cuando el correo fue aceptado por el proveedor.
- * Variables de entorno requeridas (Vercel → Settings → Environment Variables):
- *   RESEND_API_KEY  — API key de resend.com (obligatoria para enviar)
- *   LEAD_TO         — correo(s) destino, separados por coma
- *                     (default: contacto@bpsmx.com).
- *                     Si LEAD_TO está definido, se usa tal cual y no se mezcla con el default.
- *   LEAD_FROM       — remitente verificado (default: BestPack Web <onboarding@resend.dev>)
- * Sin RESEND_API_KEY el endpoint responde 503 {code:"not_configured"} y el
- * frontend conserva los datos y ofrece WhatsApp como alternativa.
+ * Flujo: validar → GUARDAR en Supabase (respaldo) → enviar correo por Resend.
+ * Éxito (200 {ok:true}) cuando el lead quedó guardado en Supabase O el correo
+ * fue aceptado por Resend. Solo responde error (502/503) si fallan los dos:
+ * el prospecto nunca debe perder su lead porque falló el correo.
+ *
+ * Variables de entorno (Vercel → Settings → Environment Variables):
+ *   RESEND_API_KEY      — API key de resend.com
+ *   LEAD_TO             — correo(s) destino, separados por coma
+ *                         (default: contacto@bpsmx.com). Si está definido, se usa tal cual.
+ *   LEAD_FROM           — remitente verificado (default: BestPack Web <onboarding@resend.dev>)
+ *   SUPABASE_URL        — https://<ref>.supabase.co
+ *   SUPABASE_KEY        — clave publishable/anon (solo puede INSERTAR en public.leads
+ *                         y llamar web_lead_email_result; no puede leer ni borrar)
+ *
+ * email_status en Supabase: pending → sent | failed | not_configured
  */
 
 const DIVISIONES = [
@@ -40,6 +46,50 @@ function esc(v) {
 }
 function row(k, v) {
   return v ? `<tr><td style="padding:6px 10px;color:#666;white-space:nowrap"><b>${k}</b></td><td style="padding:6px 10px">${esc(v)}</td></tr>` : "";
+}
+function orNull(v) {
+  return v ? v : null;
+}
+
+/* ---------- Respaldo en Supabase ---------- */
+function supabaseConfig() {
+  const url = (process.env.SUPABASE_URL || "").replace(/\/+$/, "");
+  const key = process.env.SUPABASE_KEY || "";
+  return url && key ? { url, key } : null;
+}
+
+async function supabaseInsertLead(cfg, lead) {
+  const r = await fetch(`${cfg.url}/rest/v1/leads`, {
+    method: "POST",
+    headers: {
+      apikey: cfg.key,
+      Authorization: `Bearer ${cfg.key}`,
+      "Content-Type": "application/json",
+      Prefer: "return=minimal",
+    },
+    body: JSON.stringify(lead),
+  });
+  if (!r.ok) {
+    const detail = await r.text().catch(() => "");
+    throw new Error(`supabase insert ${r.status} ${detail.slice(0, 300)}`);
+  }
+}
+
+async function supabaseEmailResult(cfg, id, status, error, resendId) {
+  try {
+    const r = await fetch(`${cfg.url}/rest/v1/rpc/web_lead_email_result`, {
+      method: "POST",
+      headers: {
+        apikey: cfg.key,
+        Authorization: `Bearer ${cfg.key}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ p_id: id, p_status: status, p_error: error || null, p_resend_id: resendId || null }),
+    });
+    if (!r.ok) console.error("supabase rpc error", r.status, (await r.text().catch(() => "")).slice(0, 300));
+  } catch (e) {
+    console.error("supabase rpc error", e && e.message);
+  }
 }
 
 module.exports = async (req, res) => {
@@ -136,10 +186,53 @@ module.exports = async (req, res) => {
       }];
     }
 
-    // ---- Envío ----
+    // ---- 1) Respaldo: guardar el lead ANTES de intentar el correo ----
+    const leadId = (globalThis.crypto && globalThis.crypto.randomUUID)
+      ? globalThis.crypto.randomUUID()
+      : require("crypto").randomUUID();
+    const sb = supabaseConfig();
+    let saved = false;
+    if (sb) {
+      try {
+        await supabaseInsertLead(sb, {
+          id: leadId,
+          nombre,
+          email: orNull(email),
+          telefono: orNull(datos.telefono),
+          empresa: orNull(datos.empresa),
+          puesto: orNull(datos.puesto),
+          ciudad: orNull(datos.ciudad),
+          division: orNull(division),
+          producto: orNull(datos.producto),
+          volumen: orNull(datos.volumen),
+          frecuencia: orNull(datos.frecuencia),
+          fecha_requerida: orNull(datos.fecha_requerida),
+          mensaje,
+          extras: Object.keys(extras).length ? extras : null,
+          requiere_validacion: requiereValidacion,
+          origen: Object.values(metaClean).some(Boolean) ? metaClean : null,
+          adjunto_nombre: attachments ? attachments[0].filename : null,
+          ip,
+          email_status: "pending",
+        });
+        saved = true;
+      } catch (e) {
+        console.error("supabase insert error", e && e.message);
+      }
+    } else {
+      console.error("supabase not configured (SUPABASE_URL / SUPABASE_KEY)");
+    }
+
+    // ---- 2) Correo ----
     const KEY = process.env.RESEND_API_KEY;
     if (!KEY) {
-      res.status(503).json({ ok: false, code: "not_configured" });
+      console.error("resend not configured (RESEND_API_KEY)");
+      if (saved) {
+        await supabaseEmailResult(sb, leadId, "not_configured", "RESEND_API_KEY ausente");
+        res.status(200).json({ ok: true, lead_id: leadId, email: "not_configured" });
+      } else {
+        res.status(503).json({ ok: false, code: "not_configured" });
+      }
       return;
     }
     const configuredTo = recipientsFrom(process.env.LEAD_TO);
@@ -175,6 +268,7 @@ module.exports = async (req, res) => {
         ${row("utm_term", metaClean.utm_term)}
         ${row("utm_content", metaClean.utm_content)}
         ${row("gclid", metaClean.gclid)}
+        ${row("ID respaldo", saved ? leadId : "")}
       </table>`;
 
     const payload = {
@@ -186,20 +280,38 @@ module.exports = async (req, res) => {
     if (email) payload.reply_to = email;
     if (attachments) payload.attachments = attachments;
 
-    const r = await fetch("https://api.resend.com/emails", {
-      method: "POST",
-      headers: { Authorization: `Bearer ${KEY}`, "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-    });
-
-    if (!r.ok) {
-      const detail = await r.text().catch(() => "");
-      console.error("Resend error", r.status, detail.slice(0, 300));
-      res.status(502).json({ ok: false, code: "send_failed" });
-      return;
+    let sent = false;
+    let sendError = "";
+    let resendId = "";
+    try {
+      const r = await fetch("https://api.resend.com/emails", {
+        method: "POST",
+        headers: { Authorization: `Bearer ${KEY}`, "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      const text = await r.text().catch(() => "");
+      if (r.ok) {
+        sent = true;
+        try { resendId = JSON.parse(text).id || ""; } catch (e) {}
+      } else {
+        // Log completo: status + cuerpo del error de Resend (403 dominio, 401 clave, 429 cuota, 422 payload…)
+        sendError = `Resend ${r.status} ${text.slice(0, 600)}`;
+        console.error("Resend error", r.status, "from=", FROM, "to=", TO.join(","), text.slice(0, 600));
+      }
+    } catch (e) {
+      sendError = `Resend fetch: ${e && e.message}`;
+      console.error("Resend fetch error", e && e.message);
     }
 
-    res.status(200).json({ ok: true });
+    if (saved) {
+      await supabaseEmailResult(sb, leadId, sent ? "sent" : "failed", sent ? null : sendError, resendId);
+    }
+
+    if (sent || saved) {
+      res.status(200).json({ ok: true, lead_id: saved ? leadId : undefined, email: sent ? "sent" : "failed" });
+      return;
+    }
+    res.status(502).json({ ok: false, code: "send_failed" });
   } catch (e) {
     console.error("lead error", e && e.message);
     res.status(500).json({ ok: false, code: "server_error" });
