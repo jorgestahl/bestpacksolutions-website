@@ -465,6 +465,13 @@ html.js .reveal.in { opacity: 1; transform: none; }
 .article-body li { font-size: 1.02rem; }
 .article-body strong { color: #fff; }
 .article-body a { color: var(--blue-400); text-decoration: underline; text-underline-offset: 3px; }
+.article-body a.btn { text-decoration: none; }
+.article-body a.btn-primary { color: #19130a; }
+.article-body a.btn-wa { color: #06340f; }
+.article-body a.btn-ghost { color: var(--text); }
+.article-body a.btn-blue { color: #fff; }
+.article-body .coverage-list { margin: 8px 0 22px; }
+.article-body .coverage-list a.pill { color: #cdd6e8; text-decoration: none; }
 .article-meta { display: flex; gap: 16px; flex-wrap: wrap; font-size: .85rem; color: var(--muted); margin-bottom: 8px; }
 .callout { background: var(--surface); border: 1px solid var(--border); border-left: 4px solid var(--yellow); border-radius: var(--radius); padding: 20px 22px; margin: 26px 0; }
 .callout p:last-child { margin-bottom: 0; }
