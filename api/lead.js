@@ -5,7 +5,9 @@
  * Éxito (200 {ok:true}) SOLO cuando el correo fue aceptado por el proveedor.
  * Variables de entorno requeridas (Vercel → Settings → Environment Variables):
  *   RESEND_API_KEY  — API key de resend.com (obligatoria para enviar)
- *   LEAD_TO         — correo(s) destino, separados por coma (default: contacto@bpsmx.com)
+ *   LEAD_TO         — correo(s) destino, separados por coma
+ *                     (default: contacto@bpsmx.com, jorge.stahl@bpsmx.com, carlos@bpsmx.com).
+ *                     Si LEAD_TO está definido, se usa tal cual y no se mezcla con el default.
  *   LEAD_FROM       — remitente verificado (default: BestPack Web <onboarding@resend.dev>)
  * Sin RESEND_API_KEY el endpoint responde 503 {code:"not_configured"} y el
  * frontend conserva los datos y ofrece WhatsApp como alternativa.
@@ -21,7 +23,13 @@ const DIVISIONES = [
 ];
 
 const MAX_ADJUNTO_B64 = 4 * 1024 * 1024; // ~3 MB reales
+const DEFAULT_LEAD_TO = ["contacto@bpsmx.com", "jorge.stahl@bpsmx.com", "carlos@bpsmx.com"];
 const rateBucket = globalThis.__bpRate || (globalThis.__bpRate = new Map());
+
+function recipientsFrom(raw) {
+  if (typeof raw !== "string") return [];
+  return raw.split(",").map((s) => s.trim()).filter(Boolean);
+}
 
 function clean(v, max) {
   if (typeof v !== "string") return "";
@@ -134,7 +142,8 @@ module.exports = async (req, res) => {
       res.status(503).json({ ok: false, code: "not_configured" });
       return;
     }
-    const TO = (process.env.LEAD_TO || "contacto@bpsmx.com").split(",").map((s) => s.trim());
+    const configuredTo = recipientsFrom(process.env.LEAD_TO);
+    const TO = configuredTo.length ? configuredTo : DEFAULT_LEAD_TO.slice();
     const FROM = process.env.LEAD_FROM || "BestPack Web <onboarding@resend.dev>";
 
     const html = `
